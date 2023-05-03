@@ -6,8 +6,6 @@ variable "aws_region" {
 }
 
 variable enviro {
-  type = list
-  default = []
 }
 
 
