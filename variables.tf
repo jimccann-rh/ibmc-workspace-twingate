@@ -7,7 +7,12 @@ variable "aws_region" {
 
 
 variable "enviro" {
-  type = map
+  type = map(object({
+    tg_remote_network_id = string
+    tg_subnet = string
+    tg_security_group = list(string)
+    aws_key = string
+  }))
 }
 
 
