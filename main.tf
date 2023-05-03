@@ -14,7 +14,6 @@ variable "AWS_ACCESS_KEY_ID" {}
 variable "AWS_SECRET_ACCESS_KEY" {}
 variable "tg_api_key" {}
 variable "tg_network" {}
-variable "tg_owner" {}
 
 # Configure the AWS Provider
   provider "aws" {
@@ -39,7 +38,7 @@ data "aws_ami" "twingate" {
     values = ["twingate/images/hvm-ssd/twingate-amd64-*"]
   }
 
-  owners = [var.tg_owner] # Twingate
+  owners = ["617935088040"] # Twingate
 }
 
 
