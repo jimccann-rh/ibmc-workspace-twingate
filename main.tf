@@ -45,12 +45,12 @@ data "aws_ami" "twingate" {
 
 
 resource "twingate_connector" "tg_connector" {
-  for_each = var.enviro
+  for_each = toset([var.enviro])
   remote_network_id = each.value.tg_remote_network_id
 }
 
 resource "twingate_connector_tokens" "aws_connector_tokens" {
-  for_each = var.enviro
+  for_each = toset([var.enviro])
   connector_id = twingate_connector.tg_connector[each.key].id
 }
 
@@ -58,7 +58,7 @@ resource "aws_instance" "twingate_connector" {
   lifecycle {
     create_before_destroy = true
   }
-  for_each = var.enviro
+  for_each = toset([var.enviro])
   ami           = data.aws_ami.twingate.id
   instance_type = "t3.micro"
   associate_public_ip_address = false
