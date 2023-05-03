@@ -5,11 +5,12 @@ variable "aws_region" {
   default = "us-east-2"
 }
 
-locals {
-  tfws = "${terraform.workspace}"
-  enviro = {  
-  }
+variable enviro {
+  type = list
+  default = []
 }
+
+
 
 
 
